@@ -26,7 +26,7 @@ define('DB_NAME', 'egyptmade');
 define('DB_USER', 'root');
 
 /** MySQL database password */
-define('DB_PASSWORD', '@Ya1381992');
+define('DB_PASSWORD', '');
 
 /** MySQL hostname */
 define('DB_HOST', 'localhost');
