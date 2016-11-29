@@ -29,6 +29,8 @@
 # 20140402 Initially Published
 #
 # -----------------------------------------------------------------
+.htaccess
+wp-config.php
 
 # ignore everything in the root except the "wp-content" directory.
 /*
@@ -98,6 +100,3 @@ wp-content/themes/twenty*/
 
 # ignore node/grunt dependency directories
 node_modules/
-
-.htaccess
-wp-config.php
