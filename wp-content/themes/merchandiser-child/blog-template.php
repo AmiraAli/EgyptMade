@@ -67,9 +67,22 @@ get_header();
                                                 $orig_query = $wp_query; // fix for pagination to work
                                                 $wp_query = $posts;
                                                 ?>
-                                                <div style="text-align: center;">
-                                                <?php the_posts_pagination();?>
-                                                </div>
+<!--                                                <div style="text-align: center;">-->
+<!--                                                --><?php //the_posts_pagination();?>
+<!--                                                </div>-->
+
+                                <div class="row">
+                                    <div class="large-12 columns ">
+                                        <nav class="posts-navigation" >
+                                            <div class="nav-links">
+                                                <a class='next page-numbers' href="<?php the_posts_pagination();?>" ></a>
+
+
+                                            </div>
+                                        </nav>
+                                    </div>
+                                </div
+
                                         <!--        <nav class="prev-next-posts">-->
                                         <!--            <div class="prev-posts-link">-->
                                         <!--                --><?php //echo get_next_posts_link( 'Older Entries', $posts->max_num_pages ); ?>
@@ -91,11 +104,11 @@ get_header();
 <!--        <div class="large-12 columns ">-->
 <!--            <nav class="posts-navigation" >-->
 <!--                <div class="nav-links">-->
-<!--<a class='page-numbers' href="" ></a>-->
+<!--<a class='next page-numbers' href="" ></a>-->
 <!---->
 <!---->
-<!--                </div><!-- .nav-links -->
-<!--            </nav><!-- .navigation -->
+<!--                </div>-->
+<!--            </nav>-->
 <!--        </div>-->
 <!--    </div-->
 
