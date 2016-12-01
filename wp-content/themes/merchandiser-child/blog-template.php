@@ -15,9 +15,7 @@ get_header();
                                             <div class="large-12 columns">
                                                 <ul id="masonry_grid" class="blog_posts masonry_columns_3" data-columns>
                                                     <?php
-
                                                     $paged = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
-
                                                     $args=['post_type'=>'post','order' => 'DESC','orderby' => 'post_date',
                                                     'posts_per_page' => 2,'paged' => $paged];
                                                     $posts=new wp_Query($args);?>
@@ -67,21 +65,20 @@ get_header();
                                                 $orig_query = $wp_query; // fix for pagination to work
                                                 $wp_query = $posts;
                                                 ?>
-<!--                                                <div style="text-align: center;">-->
-<!--                                                --><?php //the_posts_pagination();?>
-<!--                                                </div>-->
+                                                <div style="text-align: center;">
+                                                <?php the_posts_pagination();?>
+                                                </div>
 
-                                <div class="row">
-                                    <div class="large-12 columns ">
-                                        <nav class="posts-navigation" >
-                                            <div class="nav-links">
-                                                <a class='next page-numbers' href="<?php the_posts_pagination();?>" ></a>
-
-
-                                            </div>
-                                        </nav>
-                                    </div>
-                                </div
+<!--                                <div class="row">-->
+<!--                                    <div class="large-12 columns ">-->
+<!--                                        <nav class="posts-navigation" >-->
+<!--                                            <div class="nav-links">-->
+<!--                                                <a class='next page-numbers' href="--><?php //the_posts_pagination();?><!--" ></a>-->
+<!---->
+<!--                                            </div>-->
+<!--                                        </nav>-->
+<!--                                    </div>-->
+<!--                                </div>-->
 
                                         <!--        <nav class="prev-next-posts">-->
                                         <!--            <div class="prev-posts-link">-->
@@ -117,4 +114,3 @@ get_header();
                         </div><!-- #primary -->
                     </div>
 <?php get_footer(); ?>
-
