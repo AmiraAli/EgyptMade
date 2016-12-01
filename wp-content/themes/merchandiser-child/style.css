@@ -14,7 +14,6 @@ Version: 1.0
 /****************************************************************/
 
 
-{font-size: 18px;}body,.page-wrapper,.woocommerce ul.products li.product .product_thumbnail .shop_product_buttons_wrapper,.woocommerce ul.products li.product .shop_product_metas,#expand_this,body.blog:not(.woocommerce) .blog_layout_1 .sticky_post_container .sticky_meta,body.archive:not(.woocommerce) .blog_layout_1 .sticky_post_container .sticky_meta,body.blog:not(.woocommerce) .blog_layout_1 .blog_posts .blog_post:nth-child(8n+2):nth-child(even) .post_content_wrapper,body.blog:not(.woocommerce) .blog_layout_1 .blog_posts .blog_post:nth-child(4n+3) .post_content_wrapper,body.blog:not(.woocommerce) .blog_layout_1 .blog_posts .blog_post:nth-child(4n+4) .post_content_wrapper,body.blog:not(.woocommerce) .blog_layout_1 .blog_posts .blog_post:nth-child(8n+5):nth-child(odd) .post_content_wrapper{background: #fff;}
 
 
 
