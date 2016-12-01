@@ -28,6 +28,7 @@ define('DB_USER', 'root');
 /** MySQL database password */
 
 
+
 define('DB_PASSWORD', 'admin');
 
 
