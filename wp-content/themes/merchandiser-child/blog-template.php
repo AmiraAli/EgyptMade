@@ -17,7 +17,7 @@ get_header();
                                                     <?php
                                                     $paged = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
                                                     $args=['post_type'=>'post','order' => 'DESC','orderby' => 'post_date',
-                                                    'posts_per_page' => 2,'paged' => $paged];
+                                                    'posts_per_page' => 3,'paged' => $paged];
                                                     $posts=new wp_Query($args);?>
                                             <?php if ( $posts->have_posts() ) : ?>
                                                  <?php while ( $posts->have_posts() ) : $posts->the_post(); ?>
@@ -26,18 +26,20 @@ get_header();
                                                             <header class="entry-header">
                                                                 <div class="image-wrapper">
                                                                     <?php if ( has_post_thumbnail() ) {?>
-                                                                    <a class="entry-link" href="<?php the_permalink();?>"><?php the_post_thumbnail();?></a>
+                                                                    <a class="entry-link" href="<?php the_permalink();?>">
+                                                                        <?php the_post_thumbnail();?></a>
+                                                                    <?php } else { ?>
+                                                                    <a class="entry-link" href="<?php the_permalink();?>">
+
+                                                                    <img height="184" width="274" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" src="http://localhost/EgyptMade/wp-content/uploads/2016/12/thumbnail-default.jpg">
+</a>
+                                                                    <?php } ?>
+
                                                                 <?php the_title( sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
                                                                 <div class="excerpt">
                                                                 <?php the_excerpt(); ?>
                                                                 <a class="read_more" href="<?php echo get_permalink(); ?>"> Read More...</a>
                                                                 </div>
-
-
-
-                                            <?php } else { ?>
-                                                    <div style="background: #F7F7F7; min-height: 457px;"></div>
-                                            <?php } ?>
                                                                 </div>
                                                                 <a class="entry-link" href="<?php the_permalink();?>"></a>
                                                             </header><!-- .entry-header -->
@@ -54,40 +56,28 @@ get_header();
                                                         </article><!-- #post-## -->
                                                     </li>
                                                   <?php endwhile;?>
+                                                    <?php wp_reset_query(); ?>
                                                 </ul>
                                             </div>
                                         </div>
                                     </div><!-- .columns -->
                                 </div><!-- .row -->
                                         <?php if ($posts->max_num_pages > 1) { // check if the max number of pages is greater than 1  ?>
-
                                          <?php
                                                 $orig_query = $wp_query; // fix for pagination to work
                                                 $wp_query = $posts;
                                                 ?>
                                                 <div style="text-align: center;">
-                                                <?php the_posts_pagination();?>
+                                                <?php $big = 999999999;  echo paginate_links( array(
+                                                    'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+                                                    'format' => '?paged=%#%',
+                                                    'current' => max( 1, get_query_var('paged') ),
+                                                    'total' => $wp_query->max_num_pages
+                                                )
+                                                 );?>
                                                 </div>
 
-<!--                                <div class="row">-->
-<!--                                    <div class="large-12 columns ">-->
-<!--                                        <nav class="posts-navigation" >-->
-<!--                                            <div class="nav-links">-->
-<!--                                                <a class='next page-numbers' href="--><?php //the_posts_pagination();?><!--" ></a>-->
-<!---->
-<!--                                            </div>-->
-<!--                                        </nav>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-
-                                        <!--        <nav class="prev-next-posts">-->
-                                        <!--            <div class="prev-posts-link">-->
-                                        <!--                --><?php //echo get_next_posts_link( 'Older Entries', $posts->max_num_pages ); ?>
-                                        <!--            </div>-->
-                                        <!--            <div class="next-posts-link">-->
-                                        <!--                --><?php //echo get_previous_posts_link( 'Newer Entries' ); ?>
-                                        <!--            </div>-->
-                                        <!--        </nav>-->
+<
                                                 <?php
                                                 $wp_query = $orig_query; // fix for pagination to work
                                                 ?>
@@ -95,19 +85,7 @@ get_header();
 
                                          <?php endif;?>
 
-<!--load more Design -->
 
-<!--                            <div class="row">-->
-<!--        <div class="large-12 columns ">-->
-<!--            <nav class="posts-navigation" >-->
-<!--                <div class="nav-links">-->
-<!--<a class='next page-numbers' href="" ></a>-->
-<!---->
-<!---->
-<!--                </div>-->
-<!--            </nav>-->
-<!--        </div>-->
-<!--    </div-->
 
 
                             </main><!-- #main -->
