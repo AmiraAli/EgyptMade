@@ -25,3 +25,13 @@ if (function_exists('pll_register_string')) {
 //klma f sf7a 
 //group ay kalam woocommerce
 }
+
+/**
+ * Register shop, single product ,product category
+ */
+
+
+
+/**
+ * Rgister cart, checkout
+ */
