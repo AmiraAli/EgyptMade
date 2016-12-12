@@ -13,7 +13,7 @@ get_header();
 switch ($custom_blog_layout)
 {        
     case "blog_layout_default":
-        require_once('index-default.php');
+        require_once('index-layout-2.php');
         break;
     case "blog_layout_1":
         require_once('index-layout-1.php');

@@ -21,4 +21,7 @@ if (function_exists('pll_register_string')) {
     pll_register_string('from', 'From:', 'wc-vendors');
     pll_register_string('to', 'To:', 'wc-vendors');
     pll_register_string('show', 'Show', 'wc-vendors');
+//awel 7aga unique small letter benha _
+//klma f sf7a 
+//group ay kalam woocommerce
 }
