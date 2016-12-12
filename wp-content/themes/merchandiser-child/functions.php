@@ -22,3 +22,13 @@ if (function_exists('pll_register_string')) {
     pll_register_string('to', 'To:', 'wc-vendors');
     pll_register_string('show', 'Show', 'wc-vendors');
 }
+
+/**
+ * Register shop, single product ,product category
+ */
+
+
+
+/**
+ * Rgister cart, checkout
+ */
