@@ -22,7 +22,7 @@ if (!defined('ABSPATH')) {
 }
 ?>
 
-<p>
+<p>    
 	<?php
 	if (function_exists('pll_e')) {
 
