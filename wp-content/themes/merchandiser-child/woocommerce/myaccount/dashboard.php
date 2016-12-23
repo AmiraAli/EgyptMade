@@ -22,17 +22,14 @@ if (!defined('ABSPATH')) {
 }
 ?>
 
-<p>    
+<p>
 	<?php
 	if (function_exists('pll_e')) {
 
-
-		echo sprintf(esc_attr__(pll_e('Hello (not? Sign out)'), 'woocommerce'), '<strong>', esc_html($current_user->display_name), '</strong>', '<a href="' . esc_url(wc_get_endpoint_url('customer-logout', '', wc_get_page_permalink('myaccount'))) . '">', '</a>');
-		$name=esc_html($current_user->display_name);
-		echo "<br>". $name;
-		$x = esc_url(wc_get_endpoint_url('customer-logout', '', wc_get_page_permalink('myaccount')));
-		echo "<br><br>" . '<a href="' . $x . '"> "' . pll_e("Sign Out") . '"</a>';
-	
+  $hello=pll__('Hello');
+  $sign_out=pll__('Sign out');
+  $not=pll__('not');
+echo sprintf( esc_attr__( ''.$hello.' %s%s%s ('.$not.' %2$s? %s'.$sign_out.'%s)', 'woocommerce' ), '<strong>', esc_html( $current_user->display_name ), '</strong>', '<a href="' . esc_url( wc_get_endpoint_url( 'customer-logout', '', wc_get_page_permalink( 'myaccount' ) ) ) . '">', '</a>' );	
 	}
 	else{
 				echo sprintf( esc_attr__( 'Hello %s%s%s (not %2$s? %sSign out%s)', 'woocommerce' ), '<strong>', esc_html( $current_user->display_name ), '</strong>', '<a href="' . esc_url( wc_get_endpoint_url( 'customer-logout', '', wc_get_page_permalink( 'myaccount' ) ) ) . '">', '</a>' );
@@ -44,17 +41,15 @@ if (!defined('ABSPATH')) {
 <p>
 	<?php
 	if (function_exists('pll_e')) {
-		$link = esc_url(wc_get_endpoint_url('orders'));
-		echo sprintf(esc_attr__(pll_e('From your account dashboard you can view your'), 'woocommerce'), '<a href="' . esc_url(wc_get_endpoint_url('orders')) . '">', '</a>');
-		echo '<a href="' . $link . '"> الطلبيات الأخيرة </a>';
-
-		$link_1 = esc_url(wc_get_endpoint_url('edit-address'));
-		echo sprintf(esc_attr__(pll_e('manage your'), 'woocommerce'), '<a href="' . esc_url(wc_get_endpoint_url('edit-address')) . '">');
-		echo '<a href="' . $link_1 . '"> الشحن والفواتير وعناوين</a>';
-
-		$link_2 = esc_url(wc_get_endpoint_url('edit-account'));
-		echo sprintf(esc_attr__(pll_e('and'), 'woocommerce'), '<a href="' . esc_url(wc_get_endpoint_url('edit-address')) . '">');
-		echo '<a href="' . $link_2 . '"> تعديل حسابك و رقمك السري</a>';
+		
+		$form=pll__('From your account dashboard you can view your');
+		$recent_orders=pll__('recent orders');
+		$manage_your=pll__('manage your');
+		$and=pll__('and');
+		$shipping_and_billing_addresses=pll__('shipping and billing addresses');
+		$edit_your_password_and_account_details=pll__('edit your password and account details');
+		echo sprintf(esc_attr__(''.$form.' %1$s'.$recent_orders.'%2$s, '.$manage_your.' %3$s'.$shipping_and_billing_addresses.'%2$s '.$and.' %4$s '.$edit_your_password_and_account_details.'%2$s.', 'woocommerce'), '<a href="' . esc_url(wc_get_endpoint_url('orders')) . '">', '</a>', '<a href="' . esc_url(wc_get_endpoint_url('edit-address')) . '">', '<a href="' . esc_url(wc_get_endpoint_url('edit-account')) . '">');
+	
 	} else {
 		echo sprintf(esc_attr__('From your account dashboard you can view your %1$srecent orders%2$s, manage your %3$sshipping and billing addresses%2$s and %4$sedit your password and account details%2$s.', 'woocommerce'), '<a href="' . esc_url(wc_get_endpoint_url('orders')) . '">', '</a>', '<a href="' . esc_url(wc_get_endpoint_url('edit-address')) . '">', '<a href="' . esc_url(wc_get_endpoint_url('edit-account')) . '">');
 	}
