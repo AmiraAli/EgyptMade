@@ -106,15 +106,14 @@ if (function_exists('pll_register_string')) {
 	pll_register_string('Password Change', 'Password Change', 'myAcount');
 	//New Password (leave blank to leave unchanged)
 	pll_register_string('New Password (leave blank to leave unchanged)', 'New Password (leave blank to leave unchanged)', 'myAcount');
-    //Confirm New Password
+	//Confirm New Password
 	pll_register_string('Confirm New Password', 'Confirm New Password', 'myAcount');
 	//Save changes
 	pll_register_string('Save changes', 'Save changes', 'myAcount');
 	//Lost your password? Please enter your username or email address. You will receive a link to create a new password via email.
-	
 	pll_register_string('Lost your password? Please enter your username or email address. You will receive a link to create a new password via email.', 'Lost your password? Please enter your username or email address. You will receive a link to create a new password via email.', 'myAcount');
 	//Username or email
 	pll_register_string('Username_or_email', 'Username or email', 'myAcount');
 	//Reset Password
-		pll_register_string('Reset Password', 'Reset Password', 'myAcount');
+	pll_register_string('Reset Password', 'Reset Password', 'myAcount');
 }
