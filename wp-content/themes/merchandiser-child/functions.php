@@ -1,7 +1,7 @@
 <?php
 
-include_once   get_stylesheet_directory_uri().'functions1.php';
-include_once get_stylesheet_directory_uri().'functions2.php';
+require_once   'functions1.php';
+require_once 'functions2.php';
 
 // register wc vendor translate strings
 add_action('wp_enqueue_scripts', 'register_theme_enqueue_styles');
