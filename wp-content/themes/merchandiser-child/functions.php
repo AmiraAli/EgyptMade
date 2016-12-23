@@ -1,6 +1,12 @@
 <?php
 
 // register wc vendor translate strings
+add_action('wp_enqueue_scripts', 'register_theme_enqueue_styles');
+
+function register_theme_enqueue_styles() {
+    // custom script
+    wp_enqueue_script('custom-script', get_stylesheet_directory_uri() . '/js/custom.js');
+}
 if (function_exists('pll_register_string')) {
 
 	pll_register_string('view_your_store', 'View Your Store', 'wc-vendors');
@@ -26,6 +32,9 @@ if (function_exists('pll_register_string')) {
 	/**
 	 * Register shop, single product ,product category
 	 */
+
+
+
 	/**
 	 * Rgister cart, checkout
 	 */
