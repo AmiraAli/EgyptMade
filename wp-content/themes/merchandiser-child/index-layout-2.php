@@ -1,7 +1,6 @@
-<div class="blog_layout_1">
-	
-	<div class="row" style="max-width: 100%">
+<div class="blog_layout_2">
 
+	<div class="row" style="max-width: 100%">
 
 		<div id="primary" class="content-area fullwidth">
 
@@ -10,11 +9,11 @@
 		    	<?php if ( "on" == $page_title_option ) : ?>
 
 			    	<div class="blog-header-wrapper">
-			  
+
 						<h1 class="blog-header">
 
 		            		<?php wp_title( '' ); ?>
-			            	
+
 			            </h1>
 
 		                <?php if (category_description() != '') : ?>
@@ -24,9 +23,9 @@
 								</div>
 							</div>
 						<?php endif; ?>
-	            
+
 		            	<ul class="list_categories list-centered">
-							
+
 							<?php $args = array(
 									'show_option_all'    => '',
 									'orderby'            => 'name',
@@ -59,7 +58,7 @@
 				            	if ( is_home() ) {
 
 				            		$current_cat = 'current-cat';
-				            	}	
+				            	}
 
 			            	?>
 
@@ -68,16 +67,15 @@
 									else echo esc_url( home_url() );?>"><?php echo esc_html__( 'ALL', 'getbowtied'); ?>
 								</a>
 							</li>
-						   <?php wp_list_categories( $args ); ?> 
+						   <?php wp_list_categories( $args ); ?>
 
 						</ul>
 
 					</div>
 
-
 				<?php endif; ?>
-				
-				<?php 
+
+				<?php
 			    	if ( isset($sticky[0]) ) {
 				    	global $wp_query;
 						$args = array_merge( $wp_query->query_vars, array(  'post__not_in' => array($sticky[0]) ) );
@@ -87,42 +85,50 @@
 
 				<ul class="blog_posts">
 
-
 					<?php if ( have_posts() ) : ?>
 
 					<?php while ( have_posts() ) : the_post(); ?>
-						
-							<li class="blog_post">
 
-								<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+						<li class="blog_post">
 
-									<div class="bg-image-wrapper">
-										
-										<div class="bg-image" style="background: #F7F7F7 url(<?php echo esc_url( the_post_thumbnail_url( 'full' ) ); ?>)"></div>
+							<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-									</div>
+								<div class="bg-image-wrapper">
 
-									<div class="post_content_wrapper">
+									<div class="bg-image" style="background: #F7F7F7 url(<?php echo esc_url( the_post_thumbnail_url( 'full' ) ); ?>)"></div>
 
-										<div class="post_content">
+								</div>
 
-											<?php the_category(); ?>
+								<div class="post_content_wrapper">
 
-									        <?php the_title( sprintf( '<h3 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h3>' ); ?>
+									<div class="post_content">
 
-									        <?php the_excerpt(); ?>
+										<?php the_category(); ?>
 
-									        <a class="read_more" href="<?php echo get_permalink(); ?>"> Read More</a>
+								        <?php the_title( sprintf( '<h3 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h3>' ); ?>
 
-								        </div>
-										
-									</div>
+								        <?php the_excerpt(); ?>
 
-									<a class="entry-link" href="<?php echo the_permalink(); ?>"></a>
+								        <a class="read_more" href="<?php echo get_permalink(); ?>">
 
-								</article>
+											<?php  if (function_exists('pll_e')) {
+												pll_e('READ MORE');
+											} else {
+												echo _e('READ MORE', 'woocommerce');
 
-							</li>
+											}?>
+
+										</a>
+
+							        </div>
+									
+								</div>
+
+								<a class="entry-link" href="<?php echo the_permalink(); ?>"></a>
+
+							</article>
+
+						</li>
 
 					<?php endwhile; ?>
 
@@ -140,6 +146,6 @@
 
 		</div>  <!--  end primary -->
 
-	</div>  <!--  end full row -->
+	</div> <!-- end full row -->
 
-</div>  <!-- end blog layout 1 -->
+</div>  <!-- end blog layout 2 -->
