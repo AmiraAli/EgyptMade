@@ -112,7 +112,14 @@
 
 									        <?php the_excerpt(); ?>
 
-									        <a class="read_more" href="<?php echo get_permalink(); ?>"> Read More</a>
+									        <a class="read_more" href="<?php echo get_permalink(); ?>">
+												<?php  if (function_exists('pll_e')) {
+													pll_e('READ MORE');
+												} else {
+													echo _e('READ MORE', 'woocommerce');
+
+												}?>
+											</a>
 
 								        </div>
 										

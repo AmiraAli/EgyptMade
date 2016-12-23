@@ -123,15 +123,15 @@ msgstr ""
 
 #: functions/enqueue-scripts.php:24
 msgid "Load More Items"
-msgstr ""
+msgstr "اعرض المزيد "
 
 #: functions/enqueue-scripts.php:25
 msgid "Loading"
-msgstr ""
+msgstr "تحميل "
 
 #: functions/enqueue-scripts.php:26
 msgid "No more items available."
-msgstr ""
+msgstr "لا يوجد المزيد "
 
 #: functions/theme-setup.php:28
 msgid "Primary Menu"
