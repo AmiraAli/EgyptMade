@@ -17,7 +17,7 @@ if (function_exists('pll_register_string')) {
     pll_register_string('loading', 'Loading', 'woocommerce'); //done //fadl a7tha azai 
     pll_register_string('load_more_item', 'Load More Item', 'woocommerce'); //done //fadl a7tha azai  
 
-    pll_register_string('add_to_cart', 'ADD TO CART', 'woocommerce');//plugins/woocommerce/includes/class-wc-product-simple.php method  add_to_cart_text() , plugins/woocommerce/includes/abstracts/abstract-wc-product.php single_add_to_cart_text()
+    pll_register_string('add_to_cart', 'ADD TO CART', 'woocommerce');//done//plugins/woocommerce/includes/class-wc-product-simple.php method  add_to_cart_text() , plugins/woocommerce/includes/abstracts/abstract-wc-product.php single_add_to_cart_text()
     pll_register_string('sold_by', 'Sold By', 'woocommerce');//done//plugin/wc-vendors/classes/vendor/vendor-shop.php
     pll_register_string('egypt_made', 'egypt made', 'woocommerce');//done
 
@@ -309,7 +309,38 @@ if (function_exists('pll_e')) {
 
 
 
+add_filter( 'woocommerce_product_add_to_cart_text', 'custom_add_to_cart_text', 10,2 );
+function custom_add_to_cart_text($text,$product) {
+    if (function_exists('pll_e')) {
+        $addToCart = pll__('ADD TO CART');
+        $readMore=pll__('READ MORE');
 
+
+    } else {
+        $addToCart = _e('ADD TO CART', 'woocommerce');
+        $readMore = _e('READ MORE', 'woocommerce');
+
+
+
+    }
+
+    $text = $product->is_purchasable() && $product->is_in_stock() ? __( $addToCart, 'woocommerce' ) : __( $readMore, 'woocommerce' );
+
+    return $text;
+}
+
+add_filter( 'woocommerce_product_single_add_to_cart_text','custome_single_add_to_cart_text',10,2  );
+ function custome_single_add_to_cart_text($text,$product) {
+     if (function_exists('pll_e')) {
+         $addToCart = pll__('ADD TO CART');
+
+     } else {
+         $addToCart = _e('ADD TO CART', 'woocommerce');
+
+
+     }
+    return $addToCart;
+}
 
 
 

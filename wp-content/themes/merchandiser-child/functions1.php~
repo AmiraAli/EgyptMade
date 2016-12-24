@@ -35,7 +35,7 @@ if (function_exists('pll_register_string')) {
     pll_register_string('sort_by_average_price', 'SORT BY PRICE: LOW TO HIGH', 'woocommerce');//done //wc-template-functions.php
     pll_register_string('sort_by_average_price_inverse', 'SORT BY PRICE: HIGH TO LOW', 'woocommerce'); //done//wc-template-functions.php
 
-    pll_register_string('be_the_first_to_review', 'Be The First To Review', 'woocommerce'); //done//plugins/woocommerce/templates/single-product-reviews.php
+    pll_register_string('be_the_first_to_review', 'Be The First To Review', 'woocommerce'); //done//plugins/woocommerce/templates/single-product-reviews.php  //override gwa woocomerce child theme
     pll_register_string('your_review', 'YOUR REVIEW', 'woocommerce'); //done
     pll_register_string('name', 'NAME', 'woocommerce'); //done
     pll_register_string('email', 'EMAIL', 'woocommerce'); //done
@@ -309,7 +309,38 @@ if (function_exists('pll_e')) {
 
 
 
+add_filter( 'woocommerce_product_add_to_cart_text', 'custom_add_to_cart_text', 10,2 );
+function custom_add_to_cart_text($text,$product) {
+    if (function_exists('pll_e')) {
+        $addToCart = pll__('ADD TO CART');
+        $readMore=pll__('READ MORE');
 
+
+    } else {
+        $addToCart = _e('ADD TO CART', 'woocommerce');
+        $readMore = _e('READ MORE', 'woocommerce');
+
+
+
+    }
+
+    $text = $product->is_purchasable() && $product->is_in_stock() ? __( $addToCart, 'woocommerce' ) : __( $readMore, 'woocommerce' );
+
+    return $text;
+}
+
+add_filter( 'woocommerce_product_single_add_to_cart_text','custome_single_add_to_cart_text',10,2  );
+ function custome_single_add_to_cart_text($text,$product) {
+     if (function_exists('pll_e')) {
+         $addToCart = pll__('ADD TO CART');
+
+     } else {
+         $addToCart = _e('ADD TO CART', 'woocommerce');
+
+
+     }
+    return $addToCart;
+}
 
 
 
