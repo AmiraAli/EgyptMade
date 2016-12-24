@@ -131,10 +131,15 @@ if ( WC_Vendors::$pv_options->get_option( 'sold_by' ) ) {
 
 
 if ( GETBOWTIED_WOOCOMMERCE_IS_ACTIVE ) {
- 
+ add_action( 'after_setup_theme', 'remove_parent_theme_functions', 0 );
+
+function remove_parent_theme_functions() {
+
+    	    remove_action('woocommerce_after_shop_loop_item','getbowtied_product_quick_view_button', 5);
+
+}
  	
 
-	    remove_action('woocommerce_after_shop_loop_item','getbowtied_product_quick_view_button', 5);
 
 		add_action( 'woocommerce_after_shop_loop_item', 'custom_getbowtied_product_quick_view_button', 5 );
 	// Show Quick View Button
