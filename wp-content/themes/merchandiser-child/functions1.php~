@@ -79,5 +79,5 @@ if (!function_exists('getbowtied_scripts')) :
 
     add_action('wp_enqueue_scripts', 'getbowtied_scripts');
 endif;
-add_filter( 'woocommerce_get_item_data',  'custom_sold_by' , 10, 2 );
+add_filter( 'woocommerce_get_item_data', array( 'WCV_Vendor_Cart', 'sold_by' ), 10, 2 );
 
