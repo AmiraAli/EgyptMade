@@ -79,19 +79,24 @@ if (!function_exists('getbowtied_scripts')) :
 
     add_action('wp_enqueue_scripts', 'getbowtied_scripts');
 endif;
-add_filter( 'woocommerce_get_item_data',  'custom_sold_by' , 10, 2 );
 
-add_filter('woocommerce_get_item_data', 'custom_sold_by', 10, 2);
 
-function custom_sold_by($values, $cart_item) {
-    $vendor_id = $cart_item['data']->post->post_author;
-    $sold_by_label = pll_e(WC_Vendors::$pv_options->get_option('sold_by_label'));
-    $sold_by = WCV_Vendors::is_vendor($vendor_id) ? sprintf('<a href="%s" target="_TOP">%s </a>', WCV_Vendors::get_vendor_shop_page($vendor_id), WCV_Vendors::get_vendor_sold_by($vendor_id)) : get_bloginfo('name');
+if ( WC_Vendors::$pv_options->get_option( 'sold_by' ) ) { 
+			add_action( 'woocommerce_after_shop_loop_item', 'custom_template_loop_sold_by', 9 );
+		} 
 
-    $values[] = array(
-        'name' => apply_filters('wcvendors_cart_sold_by', $sold_by_label, $cart_item['data']->post->ID, $cart_item['data']->post->post_author),
-        'display' => $sold_by,
-    );
+ function custom_template_loop_sold_by($product_id) { 
+		$vendor_id     = WCV_Vendors::get_vendor_from_product( $product_id );
+		$sold_by_label = "aa";//WC_Vendors::$pv_options->get_option( 'sold_by_label' );
+		$sold_by = WCV_Vendors::is_vendor( $vendor_id )
+			? sprintf( '<a href="%s">%s</a>', WCV_Vendors::get_vendor_shop_page( $vendor_id ), WCV_Vendors::get_vendor_sold_by( $vendor_id ) )
+			: get_bloginfo( 'name' );
+		
+			wc_get_template( 'vendor-sold-by.php', array(
+													'vendor_id' 		=> $vendor_id, 
+													'sold_by_label'		=> $sold_by_label, 
+													'sold_by'			=> $sold_by, 
+												
+											   ), 'wc-vendors/front/', wcv_plugin_dir . 'templates/front/' );
 
-    return $values;
-}
+	}
