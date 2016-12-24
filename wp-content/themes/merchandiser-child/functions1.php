@@ -81,3 +81,17 @@ if (!function_exists('getbowtied_scripts')) :
 endif;
 add_filter( 'woocommerce_get_item_data',  'custom_sold_by' , 10, 2 );
 
+add_filter('woocommerce_get_item_data', 'custom_sold_by', 10, 2);
+
+function custom_sold_by($values, $cart_item) {
+    $vendor_id = $cart_item['data']->post->post_author;
+    $sold_by_label = pll_e(WC_Vendors::$pv_options->get_option('sold_by_label'));
+    $sold_by = WCV_Vendors::is_vendor($vendor_id) ? sprintf('<a href="%s" target="_TOP">%s </a>', WCV_Vendors::get_vendor_shop_page($vendor_id), WCV_Vendors::get_vendor_sold_by($vendor_id)) : get_bloginfo('name');
+
+    $values[] = array(
+        'name' => apply_filters('wcvendors_cart_sold_by', $sold_by_label, $cart_item['data']->post->ID, $cart_item['data']->post->post_author),
+        'display' => $sold_by,
+    );
+
+    return $values;
+}
