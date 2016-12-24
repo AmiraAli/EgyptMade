@@ -82,6 +82,7 @@ endif;
 
 
 if ( WC_Vendors::$pv_options->get_option( 'sold_by' ) ) { 
+    remove_action('woocommerce_after_shop_loop_item',array('WCV_Vendor_Shop', 'template_loop_sold_by'), 9);
 			add_action( 'woocommerce_after_shop_loop_item', 'custom_template_loop_sold_by', 9 );
 		} 
 
