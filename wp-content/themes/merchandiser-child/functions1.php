@@ -40,7 +40,7 @@ if (function_exists('pll_register_string')) {
     pll_register_string('name', 'NAME', 'woocommerce'); //done
     pll_register_string('email', 'EMAIL', 'woocommerce'); //done
     pll_register_string('submit', 'SUBMIT', 'woocommerce'); //done
-
+    pll_register_string('view_product', 'VIEW PRODUCT', 'woocommerce'); //done
 
 
 

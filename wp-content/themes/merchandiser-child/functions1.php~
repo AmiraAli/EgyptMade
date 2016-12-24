@@ -17,7 +17,7 @@ if (function_exists('pll_register_string')) {
     pll_register_string('loading', 'Loading', 'woocommerce'); //done //fadl a7tha azai 
     pll_register_string('load_more_item', 'Load More Item', 'woocommerce'); //done //fadl a7tha azai  
 
-    pll_register_string('add_to_cart', 'ADD TO CART', 'woocommerce');//plugins/woocommerce/includes/class-wc-product-simple.php method  add_to_cart_text() , plugins/woocommerce/includes/abstracts/abstract-wc-product.php single_add_to_cart_text()
+    pll_register_string('add_to_cart', 'ADD TO CART', 'woocommerce');//done//plugins/woocommerce/includes/class-wc-product-simple.php method  add_to_cart_text() , plugins/woocommerce/includes/abstracts/abstract-wc-product.php single_add_to_cart_text()
     pll_register_string('sold_by', 'Sold By', 'woocommerce');//done//plugin/wc-vendors/classes/vendor/vendor-shop.php
     pll_register_string('egypt_made', 'egypt made', 'woocommerce');//done
 
