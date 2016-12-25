@@ -59,13 +59,20 @@
 				            	if ( is_home() ) {
 
 				            		$current_cat = 'current-cat';
-				            	}	
+				            	}
 
+							if (function_exists('pll_e')) {
+								$all = pll__('ALL');
+
+							} else {
+								$all = _e('ALL', 'woocommerce');
+
+							}
 			            	?>
 
 							<li class="cat-item <?php echo $current_cat; ?>">
 								<a href="<?php if ( get_option( 'show_on_front' ) == 'page' ) echo get_permalink( get_option('page_for_posts' ) );
-									else echo esc_url( home_url() );?>"><?php echo esc_html__( 'ALL', 'getbowtied'); ?>
+									else echo esc_url( home_url() );?>"><?php echo esc_html__( $all, 'getbowtied'); ?>
 								</a>
 							</li>
 						   <?php wp_list_categories( $args ); ?> 
