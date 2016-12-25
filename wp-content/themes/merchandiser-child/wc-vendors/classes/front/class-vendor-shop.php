@@ -178,10 +178,10 @@ class WCV_Vendor_Shop
 	*/
 	public static function template_loop_sold_by($product_id) { 
 		$vendor_id     = WCV_Vendors::get_vendor_from_product( $product_id );
-		$sold_by_label = WC_Vendors::$pv_options->get_option( 'sold_by_label' );
-		$sold_by = WCV_Vendors::is_vendor( $vendor_id )
-			? sprintf( '<a href="%s">%s</a>', WCV_Vendors::get_vendor_shop_page( $vendor_id ), WCV_Vendors::get_vendor_sold_by( $vendor_id ) )
-			: get_bloginfo( 'name' );
+		$sold_by_label = "hdhdh";//WC_Vendors::$pv_options->get_option( 'sold_by_label' );
+		$sold_by ="ayaaaaa";// WCV_Vendors::is_vendor( $vendor_id )
+			//? sprintf( '<a href="%s">%s</a>', WCV_Vendors::get_vendor_shop_page( $vendor_id ), WCV_Vendors::get_vendor_sold_by( $vendor_id ) )
+			//: get_bloginfo( 'name' );
 		
 			wc_get_template( 'vendor-sold-by.php', array(
 													'vendor_id' 		=> $vendor_id, 
