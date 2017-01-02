@@ -34,6 +34,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<?php do_action( 'woocommerce_before_checkout_shipping_form', $checkout ); ?>
 
 			<?php foreach ( $checkout->checkout_fields['shipping'] as $key => $field ) : ?>
+			
 
 				<?php woocommerce_form_field( $key, $field, $checkout->get_value( $key ) ); ?>
 

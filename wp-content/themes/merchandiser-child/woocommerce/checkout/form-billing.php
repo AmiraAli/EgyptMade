@@ -43,6 +43,19 @@ if (!defined('ABSPATH')) {
 		<?php do_action('woocommerce_before_checkout_billing_form', $checkout); ?>
 
 		<?php foreach ($checkout->checkout_fields['billing'] as $key => $field) : ?>
+		<?php
+		//pll_e($field['label']);
+		if (function_exists('pll_e')) {
+
+
+		$field['label'] = pll__($field['label']);
+	} else {
+		$field['label'] = $field['label'];
+	}
+		
+		
+		
+		?>
 
 			<?php woocommerce_form_field($key, $field, $checkout->get_value($key)); ?>
 
@@ -69,6 +82,19 @@ if (!defined('ABSPATH')) {
 				<p><?php _e('Create an account by entering the information below. If you are a returning customer please login at the top of the page.', 'woocommerce'); ?></p>
 
 			<?php foreach ($checkout->checkout_fields['account'] as $key => $field) : ?>
+					<?php
+		//pll_e($field['label']);
+		if (function_exists('pll_e')) {
+
+
+		$field['label'] = pll__($field['label']);
+	} else {
+		$field['label'] = $field['label'];
+	}
+		
+		
+		
+		?>
 
 				<?php woocommerce_form_field($key, $field, $checkout->get_value($key)); ?>
 
