@@ -346,18 +346,3 @@ add_filter( 'woocommerce_product_single_add_to_cart_text','custome_single_add_to
      }
     return $addToCart;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
