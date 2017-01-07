@@ -19,13 +19,13 @@ if ($datepicker !== 'false') {
     <thead>
         <tr>
             <th class="product-header"><?php
-if (function_exists('pll_e')) {
-    pll_e('Product');
-} else {
-    _e('Product', 'wcvendors');
-}
-;
-?></th>
+                if (function_exists('pll_e')) {
+                    pll_e('Product');
+                } else {
+                    _e('Product', 'wcvendors');
+                }
+                ;
+                ?></th>
             <th class="quantity-header"><?php
                 if (function_exists('pll_e')) {
                     pll_e('Quantity');
@@ -51,12 +51,13 @@ if (function_exists('pll_e')) {
     </thead>
     <tbody>
 
-<?php if (!empty($vendor_summary)) : ?>
+        <?php if (!empty($vendor_summary)) : ?>
 
 
-    <?php if (!empty($vendor_summary['products'])) : ?>
+            <?php if (!empty($vendor_summary['products'])) : ?>
 
-                <?php foreach ($vendor_summary['products'] as $product) :
+                <?php
+                foreach ($vendor_summary['products'] as $product) :
                     $_product = get_product($product['id']);
                     ?>
 
@@ -74,9 +75,19 @@ if (function_exists('pll_e')) {
                         <td class="commission"><?php echo woocommerce_price($product['cost']); ?></td>
                         <td class="rate"><?php echo sprintf('%.2f%%', $product['commission_rate']); ?></td>
 
-            <?php if ($can_view_orders) : ?>
+                        <?php
+                        
+                        if (function_exists('pll_get_post')) {
+                            $id = url_to_postid($product['view_orders_url']);
+                            $orders_page =  get_permalink(pll_get_post($id));
+                            $product_view_orders_url =  add_query_arg( 'orders_for_product', $product['id'], $orders_page  );
+                        } else {
+                            $product_view_orders_url = $product['view_orders_url'];
+                        }
+                        ?>
+                        <?php if ($can_view_orders) : ?>
                             <td>
-                                <a href="<?php echo $product['view_orders_url']; ?>"><?php
+                                <a href="<?php echo $product_view_orders_url; ?>"><?php
                                     if (function_exists('pll_e')) {
                                         pll_e('Show Orders');
                                     } else {
@@ -84,11 +95,11 @@ if (function_exists('pll_e')) {
                                     }
                                     ?></a>
                             </td>
-            <?php endif; ?>
+                        <?php endif; ?>
 
                     </tr>
 
-        <?php endforeach; ?>
+                <?php endforeach; ?>
 
                 <tr>
                     <td><strong><?php
@@ -104,11 +115,11 @@ if (function_exists('pll_e')) {
 
                     <?php if ($can_view_orders) : ?>
                         <td></td>
-        <?php endif; ?>
+                    <?php endif; ?>
 
                 </tr>
 
-    <?php else : ?>
+            <?php else : ?>
 
                 <tr>
                     <td colspan="4"
@@ -121,11 +132,11 @@ if (function_exists('pll_e')) {
                             ?></td>
                 </tr>
 
-    <?php endif; ?>
+            <?php endif; ?>
 
 
 
-<?php else : ?>
+        <?php else : ?>
 
             <tr>
                 <td colspan="4"
@@ -138,7 +149,7 @@ if (function_exists('pll_e')) {
                     ?></td>
             </tr>
 
-<?php endif; ?>
+        <?php endif; ?>
 
     </tbody>
 </table>

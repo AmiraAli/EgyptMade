@@ -31,3 +31,10 @@
                ?>"/>
     </p>
 </form>
+<script>
+    jQuery(document).ready(function ($){
+         $(".date-pick").datepicker({
+             "dateFormat":'yy-mm-dd'
+         });
+    });
+</script>
