@@ -6,7 +6,10 @@ if (function_exists('pll_register_string')) {
      * Rgister cart, checkout
      */
 //	downloads
-	
+	//Unfortunately your order cannot be processed as the originating bank/merchant has declined your transaction. Please attempt your purchase again.
+	pll_register_string('thanks', 'Unfortunately your order cannot be processed as the originating bank/merchant has declined your transaction. Please attempt your purchase again.', 'checkout');
+	//Thank you. Your order has been received.
+	pll_register_string('Thank you. Your order has been received.', 'Thank you. Your order has been received.', 'checkout');
 	pll_register_string('Dashboard', 'Dashboard', 'checkout');
 	pll_register_string('downloads', 'Downloads', 'checkout');
 	pll_register_string('orders', 'Orders', 'checkout');
