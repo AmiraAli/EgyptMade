@@ -7,6 +7,8 @@
 //klma f sf7a 
 //group ay kalam woocommerce
 if (function_exists('pll_register_string')) {
+    pll_register_string('category', 'CATEGORY', 'woocommerce');//done
+    pll_register_string('categories', 'CATEGORIES', 'woocommerce');//done
     pll_register_string('all', 'ALL', 'woocommerce');//done
     pll_register_string('read_more', 'READ MORE', 'woocommerce'); //done
     pll_register_string('leave_a_reply', 'Leave a Reply', 'woocommerce'); //done //comment .php 
@@ -278,6 +280,15 @@ if (function_exists('pll_e')) {
 }
 
 
+if ( GETBOWTIED_WOOCOMMERCE_IS_ACTIVE ) {
+ add_action( 'after_setup_theme', 'remove_parent_theme', 0 );
+
+function remove_parent_theme() {
+
+    	    remove_filter('woocommerce_single_product_summary_single_sharing','getbowtied_single_product_share');
+
+}
+
 add_filter('woocommerce_single_product_summary_single_sharing', 'custom_getbowtied_single_product_share');
 function custom_getbowtied_single_product_share() {
 if (function_exists('pll_e')) {
@@ -311,7 +322,7 @@ if (function_exists('pll_e')) {
     
 }
 
-
+}
 
 
 add_filter( 'woocommerce_product_add_to_cart_text', 'custom_add_to_cart_text', 10,2 );
@@ -345,6 +356,35 @@ add_filter( 'woocommerce_product_single_add_to_cart_text','custome_single_add_to
 
      }
     return $addToCart;
+}
+
+if ( ! function_exists( 'woocommerce_breadcrumb' ) ) {
+
+	/**
+	 * Output the WooCommerce Breadcrumb.
+	 *
+	 * @param array $args
+	 */
+	function woocommerce_breadcrumb( $args = array() ) {
+	//	$args = wp_parse_args( $args, apply_filters( 'woocommerce_breadcrumb_defaults', array(
+	//		'delimiter'   => '&nbsp;&#47;&nbsp;',
+	//		'wrap_before' => '<nav class="woocommerce-breadcrumb" ' . ( is_single() ? 'itemprop="breadcrumb"' : '' ) . '>',
+	//		'wrap_after'  => '</nav>',
+	//		'before'      => '',
+	//		'after'       => '',
+	//		'home'        => _x( 'Home', 'breadcrumb', 'woocommerce' )
+	//	) ) );
+
+	//	$breadcrumbs = new WC_Breadcrumb();
+
+	//	if ( ! empty( $args['home'] ) ) {
+	//		$breadcrumbs->add_crumb( $args['home'], apply_filters( 'woocommerce_breadcrumb_home_url', home_url() ) );
+	//	}
+
+	//	$args['breadcrumb'] = $breadcrumbs->generate();
+
+	//	wc_get_template( 'global/breadcrumb.php', $args );
+	}
 }
 
 
